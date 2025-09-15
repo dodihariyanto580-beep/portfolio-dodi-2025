@@ -117,60 +117,45 @@
             to { opacity: 1; }
         }
 
-        /* NEW CSS for Manufacturing, Logistics, Warehousing and ML Animations */
-        .simulation-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+            border-radius: 12px;
         }
 
-        @media (min-width: 768px) {
-            .simulation-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .simulation-container {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        
-        .simulation-box {
-            position: relative;
-            height: 250px;
-            background-color: rgba(15, 23, 42, 0.7);
-            border-radius: 12px;
-            border: 2px solid #06b6d4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            overflow: hidden;
-        }
-        .sim-canvas {
+        .video-container video, .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
 
-        /* --- Logistics Animation (simplified for efficiency) --- */
-        @keyframes moveRightLeft {
-            0% { left: -10%; transform: rotateY(0deg); }
-            49% { left: 110%; transform: rotateY(0deg); }
-            50% { left: 110%; transform: rotateY(180deg); }
-            99% { left: -10%; transform: rotateY(180deg); }
-            100% { left: -10%; transform: rotateY(0deg); }
+        .video-card {
+            background-color: #1e293b; /* slate-800 */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .transport-icon {
-            position: absolute;
-            font-size: 2.5rem;
-            animation-duration: 20s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
+        
+        .video-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
         }
-        .truck-anim { bottom: 20px; animation-name: moveRightLeft; }
-        .ship-anim { bottom: 50px; animation-name: moveRightLeft; animation-duration: 25s; }
-        .plane-anim { top: 20px; animation-name: moveRightLeft; animation-duration: 18s; }
+        @media (min-width: 768px) {
+            .video-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            .video-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -186,7 +171,7 @@
                 <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors">Projects</a>
                 <a href="#dashboard" class="text-slate-300 hover:text-cyan-400 transition-colors">Dashboard</a>
                 <a href="#experience" class="text-slate-300 hover:text-cyan-400 transition-colors">Experience</a>
-                <a href="#simulation" class="text-slate-300 hover:text-cyan-400 transition-colors">Project Simulation</a>
+                <a href="#digital-logistics" class="text-slate-300 hover:text-cyan-400 transition-colors">Digital Logistics</a>
                 <a href="#education" class="text-slate-300 hover:text-cyan-400 transition-colors">Education</a>
                 <a href="#certs" class="text-slate-300 hover:text-cyan-400 transition-colors">Certifications</a>
                 <a href="#publications" class="text-slate-300 hover:text-cyan-400 transition-colors">Publications</a>
@@ -489,83 +474,66 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Project Simulation Section (Updated with new animations) -->
-        <section id="simulation" class="py-24 bg-slate-900">
+            </section>
+        
+        <!-- NEW DIGITAL LOGISTICS VIDEO SECTION -->
+        <section id="digital-logistics" class="py-24 bg-slate-900">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Supply Chain & Digital Simulation</h2>
-                    <p class="text-lg mt-4 max-w-3xl mx-auto">Visual models of manufacturing, warehousing, global transportation, and machine learning processes.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Digital Logistics in Action</h2>
+                    <p class="text-lg mt-4 max-w-3xl mx-auto">See how digital technology is transforming the logistics industry.</p>
                 </div>
-                <div class="simulation-container">
-                    <!-- Realistic Manufacturing Animation (3D) -->
-                    <div class="animated-card glass-effect p-4 rounded-lg flex flex-col justify-between">
-                        <h3 class="text-xl font-semibold text-white mb-2 text-center">Manufacturing Process</h3>
-                        <div class="simulation-box">
-                            <canvas id="manufacturing-canvas" class="sim-canvas"></canvas>
+                <div class="video-grid">
+                    <!-- Video 1: Digital Supply Chain Transformation -->
+                    <div class="video-card animated-card">
+                        <div class="video-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/Qn6QQd1LtCU" 
+                                title="Digital Supply Chain Transformation" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
+                        <h3 class="text-xl font-bold text-cyan-400 mt-4">Digital Supply Chain Transformation</h3>
+                        <p class="text-slate-300">How digitalization is changing the supply chain.</p>
                     </div>
 
-                    <!-- Warehousing Animation (3D) -->
-                    <div class="animated-card glass-effect p-4 rounded-lg flex flex-col justify-between">
-                        <h3 class="text-xl font-semibold text-white mb-2 text-center">Warehousing Activity</h3>
-                        <div class="simulation-box">
-                            <canvas id="warehousing-canvas" class="sim-canvas"></canvas>
+                    <!-- Video 2: SAP - Realizing the Digital Supply Chain -->
+                    <div class="video-card animated-card">
+                        <div class="video-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/X9ary3SCUkY" 
+                                title="SAP - Realizing the Digital Supply Chain" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
-                    </div>
-                    <!-- Transportation Animation (2D) -->
-                    <div class="animated-card glass-effect p-4 rounded-lg flex flex-col justify-between">
-                        <h3 class="text-xl font-semibold text-white mb-2 text-center">Global Logistics</h3>
-                        <div class="simulation-box">
-                            <span class="transport-icon truck-anim">🚚</span>
-                            <span class="transport-icon ship-anim">🚢</span>
-                            <span class="transport-icon plane-anim">✈️</span>
-                        </div>
+                        <h3 class="text-xl font-bold text-cyan-400 mt-4">SAP - Realizing the Digital Supply Chain</h3>
+                        <p class="text-slate-300">Realizing the digital supply chain with SAP solutions.</p>
                     </div>
 
-                    <!-- Machine Learning Animation (2D) -->
-                    <div class="animated-card glass-effect p-4 rounded-lg flex flex-col justify-between">
-                        <h3 class="text-xl font-semibold text-white mb-2 text-center">Machine Learning Model</h3>
-                        <div class="simulation-box">
-                            <canvas id="ml-canvas" class="sim-canvas"></canvas>
+                    <!-- Video 3: Digital Supply Chain Demo -->
+                    <div class="video-card animated-card">
+                        <div class="video-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/id_G4kMepPI" 
+                                title="Digital Supply Chain Demo" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
-                    </div>
-                </div>
-                <div class="mt-12 text-center">
-                    <button id="generate-project-btn" class="text-white bg-cyan-500 hover:bg-cyan-600 font-bold py-3 px-6 rounded-lg transition-colors">
-                        ✨ Generate New Project Idea
-                    </button>
-                    <div id="project-idea-container" class="animated-card glass-effect p-8 rounded-lg mt-8 text-left hidden">
-                        <h3 id="project-idea-title" class="text-2xl font-bold text-cyan-400 mb-4"></h3>
-                        <p id="project-idea-description"></p>
+                        <h3 class="text-xl font-bold text-cyan-400 mt-4">Digital Supply Chain Demo</h3>
+                        <p class="text-slate-300">A live demo of a modern digital supply chain.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- NEW AI-GENERATED EXPLORE SECTION -->
-        <section id="explore" class="py-24">
-            <div class="container mx-auto px-6 text-center">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Explore Smart Supply Chain & Digital Simulation</h2>
-                    <p class="text-lg mt-4 max-w-3xl mx-auto">Interactive models of manufacturing, warehousing, global logistics, and AI-powered decision-making for a smarter supply chain.</p>
-                </div>
-                <div class="mt-12 text-center">
-                    <button id="generate-explore-btn" class="text-white bg-cyan-500 hover:bg-cyan-600 font-bold py-3 px-6 rounded-lg transition-colors">
-                        ✨ Explore AI-Driven Insights
-                    </button>
-                    <div id="explore-container" class="animated-card glass-effect p-8 rounded-lg mt-8 text-left hidden">
-                        <h3 id="explore-title" class="text-2xl font-bold text-cyan-400 mb-4"></h3>
-                        <p id="explore-description"></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Education Section -->
-        <section id="education" class="py-24 bg-slate-900">
+        <section id="education" class="py-24">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Education</h2>
@@ -601,7 +569,7 @@
         </section>
 
         <!-- Certifications Section -->
-        <section id="certs" class="py-24">
+        <section id="certs" class="py-24 bg-slate-900">
              <div class="container mx-auto px-6">
                  <div class="text-center mb-16">
                      <div class="flex justify-center md:justify-between items-center flex-wrap gap-4">
@@ -712,7 +680,7 @@
          </section>
 
          <!-- Publications Section -->
-         <section id="publications" class="py-24 bg-slate-900">
+         <section id="publications" class="py-24">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Publications & Papers</h2>
@@ -744,7 +712,7 @@
             </section>
 
             <!-- Org Structure Section -->
-            <section id="org-structure" class="py-24">
+            <section id="org-structure" class="py-24 bg-slate-900">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Organizational Structure</h2>
@@ -793,7 +761,7 @@
             </section>
 
             <!-- Ask Dodi Section -->
-            <section id="ask-dodi" class="py-24 bg-slate-900">
+            <section id="ask-dodi" class="py-24">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Ask Dodi</h2>
@@ -1208,273 +1176,6 @@
                 });
             }
 
-            // --- 3D Manufacturing Animation (using Three.js) ---
-            function createManufacturingAnimation() {
-                const canvas = document.getElementById('manufacturing-canvas');
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-
-                // Lights
-                const ambientLight = new THREE.AmbientLight(0x404040, 2);
-                scene.add(ambientLight);
-                const pointLight = new THREE.PointLight(0xffffff, 1);
-                pointLight.position.set(5, 5, 5);
-                scene.add(pointLight);
-
-                // Conveyor belt
-                const beltGeometry = new THREE.BoxGeometry(10, 0.2, 1);
-                const beltMaterial = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.5 });
-                const belt = new THREE.Mesh(beltGeometry, beltMaterial);
-                belt.position.y = -1;
-                scene.add(belt);
-
-                // Manufacturing items
-                const itemGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-                const itemMaterial = new THREE.MeshStandardMaterial({ color: 0x06b6d4, metalness: 0.8 });
-                const items = [];
-                for (let i = 0; i < 5; i++) {
-                    const item = new THREE.Mesh(itemGeometry, itemMaterial);
-                    item.position.set(-5 + i * 2.5, -0.8, 0);
-                    items.push(item);
-                    scene.add(item);
-                }
-
-                // Robotic arm (simplified)
-                const armGroup = new THREE.Group();
-                const base = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 1, 32), new THREE.MeshStandardMaterial({ color: 0x64748b }));
-                const forearm = new THREE.Mesh(new THREE.BoxGeometry(0.2, 2, 0.2), new THREE.MeshStandardMaterial({ color: 0x94a3b8 }));
-                forearm.rotation.z = Math.PI / 4;
-                forearm.position.y = 1.0;
-                armGroup.add(base, forearm);
-                armGroup.position.set(0, -1, 0);
-                scene.add(armGroup);
-
-                camera.position.z = 5;
-                camera.position.y = 1;
-                camera.lookAt(0, 0, 0);
-
-                function animate() {
-                    requestAnimationFrame(animate);
-                    const time = Date.now() * 0.001;
-                    
-                    // Animate items on the belt
-                    items.forEach(item => {
-                        item.position.x += 0.02;
-                        if (item.position.x > 5) {
-                            item.position.x = -5;
-                        }
-                    });
-
-                    // Animate robotic arm
-                    armGroup.rotation.y = Math.sin(time) * 0.5;
-                    armGroup.children[1].rotation.z = Math.sin(time * 2) * 0.5 + Math.PI/4;
-
-                    renderer.render(scene, camera);
-                }
-
-                let animationFrameId;
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            if (!animationFrameId) {
-                                animate();
-                            }
-                        } else {
-                            cancelAnimationFrame(animationFrameId);
-                            animationFrameId = null;
-                        }
-                    });
-                }, { threshold: 0.5 });
-                observer.observe(canvas);
-
-                window.addEventListener('resize', () => {
-                     if (canvas.clientHeight > 0) {
-                         camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                         camera.updateProjectionMatrix();
-                         renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-                     }
-                 });
-            }
-
-            // --- 3D Warehousing Animation (using Three.js) ---
-            function createWarehousingAnimation() {
-                const canvas = document.getElementById('warehousing-canvas');
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-
-                const ambientLight = new THREE.AmbientLight(0x404040, 2);
-                scene.add(ambientLight);
-                const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-                directionalLight.position.set(5, 5, 5);
-                scene.add(directionalLight);
-
-                // Shelving units
-                const shelfMaterial = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.5 });
-                for (let i = 0; i < 3; i++) {
-                    const shelf = new THREE.Mesh(new THREE.BoxGeometry(1, 4, 1), shelfMaterial);
-                    shelf.position.set(i * 3 - 3, 0, 0);
-                    scene.add(shelf);
-                }
-
-                // Boxes
-                const boxGeometry = new THREE.BoxGeometry(0.8, 0.8, 0.8);
-                const boxMaterial = new THREE.MeshStandardMaterial({ color: 0x94a3b8 });
-                const boxes = [];
-                for (let i = 0; i < 3; i++) {
-                    const box = new THREE.Mesh(boxGeometry, boxMaterial);
-                    box.position.set(-3 + i * 3, 1.5, 0.5);
-                    boxes.push(box);
-                    scene.add(box);
-                }
-                const boxToMove = boxes[1];
-
-                // Forklift
-                const forklift = new THREE.Group();
-                const body = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 1.5), new THREE.MeshStandardMaterial({ color: 0x06b6d4 }));
-                body.position.z = -1;
-                const mast = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1, 0.1), new THREE.MeshStandardMaterial({ color: 0x475569 }));
-                mast.position.y = 0.25;
-                mast.position.z = -0.2;
-                const fork = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.05, 0.5), new THREE.MeshStandardMaterial({ color: 0x94a3b8 }));
-                fork.position.y = -0.2;
-                fork.position.z = -0.5;
-                forklift.add(body, mast, fork);
-                forklift.position.set(0, -1.25, 3);
-                scene.add(forklift);
-
-                camera.position.set(0, 3, 6);
-                camera.lookAt(0, 0, 0);
-
-                let time = 0;
-                let animationState = 'pickup';
-
-                function animate() {
-                    requestAnimationFrame(animate);
-
-                    time += 0.01;
-                    if (animationState === 'pickup') {
-                        forklift.position.z -= 0.05;
-                        if (forklift.position.z < 0) {
-                            animationState = 'move';
-                        }
-                    } else if (animationState === 'move') {
-                        forklift.position.x = 2 * Math.sin(time);
-                        boxToMove.position.copy(forklift.position);
-                        boxToMove.position.y = -0.6;
-                        boxToMove.position.z = forklift.position.z - 1;
-                    }
-                    renderer.render(scene, camera);
-                }
-                
-                let animationFrameId;
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            if (!animationFrameId) {
-                                animate();
-                            }
-                        } else {
-                            cancelAnimationFrame(animationFrameId);
-                            animationFrameId = null;
-                        }
-                    });
-                }, { threshold: 0.5 });
-                observer.observe(canvas);
-
-                window.addEventListener('resize', () => {
-                     if (canvas.clientHeight > 0) {
-                         camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                         camera.updateProjectionMatrix();
-                         renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-                     }
-                 });
-            }
-            
-            // --- 2D ML Animation (using Canvas) ---
-            function createMLAnimation() {
-                const canvas = document.getElementById('ml-canvas');
-                const ctx = canvas.getContext('2d');
-                let animationFrameId;
-
-                const dataPoints = [];
-                let decisionLineX = 0;
-                const colors = {
-                    'A': '#f87171', // Red
-                    'B': '#60a5fa'  // Blue
-                };
-
-                function resizeCanvas() {
-                    const container = canvas.parentElement;
-                    canvas.width = container.clientWidth - 32; // Account for padding
-                    canvas.height = container.clientHeight - 32;
-                }
-
-                function draw() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                    dataPoints.forEach(point => {
-                        ctx.beginPath();
-                        ctx.arc(point.x, point.y, 5, 0, Math.PI * 2);
-                        ctx.fillStyle = colors[point.category];
-                        ctx.fill();
-                    });
-
-                    // Draw decision line
-                    ctx.beginPath();
-                    ctx.moveTo(decisionLineX, 0);
-                    ctx.lineTo(decisionLineX, canvas.height);
-                    ctx.strokeStyle = '#06b6d4';
-                    ctx.lineWidth = 3;
-                    ctx.setLineDash([5, 5]);
-                    ctx.stroke();
-                    ctx.closePath();
-                    ctx.setLineDash([]);
-                    ctx.fillStyle = '#cbd5e1';
-                    ctx.font = '12px Inter';
-                    ctx.fillText("Class A", 10, 15);
-                    ctx.fillText("Class B", canvas.width - 70, 15);
-                }
-
-                function animateML() {
-                    if (dataPoints.length < 50) {
-                        const x = Math.random() * canvas.width;
-                        const y = Math.random() * canvas.height;
-                        const category = x < canvas.width / 2 ? 'A' : 'B';
-                        dataPoints.push({ x, y, category });
-                    }
-                    if (decisionLineX < canvas.width / 2) {
-                        decisionLineX += 0.5;
-                    }
-                    draw();
-                    animationFrameId = requestAnimationFrame(animateML);
-                }
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            resizeCanvas();
-                            if (!animationFrameId) {
-                                animateML();
-                            }
-                        } else {
-                            cancelAnimationFrame(animationFrameId);
-                            animationFrameId = null;
-                        }
-                    });
-                }, { threshold: 0.5 });
-                observer.observe(canvas);
-
-                window.addEventListener('resize', resizeCanvas);
-            }
-            
             // --- Gemini API Functions ---
 
             // Function for pure generation tasks (Project Idea, Summaries)
@@ -1595,39 +1296,6 @@
                 }
             }
             window.getPublicationSummary = getPublicationSummary;
-
-            // --- Gemini Feature: Generate Smart Supply Chain Summary ---
-            async function generateSCSummary() {
-                const btn = document.getElementById('generate-explore-btn');
-                const container = document.getElementById('explore-container');
-                const titleEl = document.getElementById('explore-title');
-                const descriptionEl = document.getElementById('explore-description');
-
-                btn.disabled = true;
-                btn.innerHTML = `<svg class="animate-spin h-5 w-5 mx-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
-                container.classList.remove('hidden');
-
-                try {
-                    const systemPrompt = "You are an expert supply chain consultant. Your task is to generate compelling, professional-sounding text about the future of digital supply chain management. The tone should be authoritative and forward-looking.";
-                    const userQuery = "Generate a single JSON object with a 'title' and 'description' (2-3 sentences) for a section about Smart Supply Chain & Digital Simulation. The content should connect interactive models of manufacturing, warehousing, global logistics, and AI-powered decision-making to a smarter supply chain. Focus on real-world application. Respond ONLY with the JSON object. Example: {\"title\": \"AI-Driven Supply Chain Intelligence\", \"description\": \"This section demonstrates the power of integrating AI into core logistics functions. Interactive models showcase how machine learning optimizes manufacturing flows, predicts warehousing needs, and enhances global route planning for peak efficiency and resilience.\"}"
-
-                    const responseText = await callGeminiForGeneration(systemPrompt, userQuery);
-                    const responseJson = JSON.parse(responseText);
-
-                    titleEl.innerText = responseJson.title;
-                    descriptionEl.innerText = responseJson.description;
-                    container.classList.add('is-visible');
-
-                } catch (error) {
-                    console.error("Error generating AI insights:", error);
-                    titleEl.innerText = "Error";
-                    descriptionEl.innerText = "Could not generate insights. Please try again later.";
-                    container.classList.add('is-visible');
-                } finally {
-                    btn.disabled = false;
-                    btn.innerHTML = `✨ Explore AI-Driven Insights`;
-                }
-            }
 
             // --- Ask Dodi Section Logic (Paper-grounded) ---
             async function getPortfolioContext() {
@@ -1765,7 +1433,7 @@
                 appendMessage(userPrompt, true);
                 inputElement.value = '';
                 sendButton.disabled = true;
-                sendButton.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+                sendButton.innerHTML = `<svg class="animate-spin h-5 w-5 mx-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
 
                 try {
                     const { text } = await fetchGeminiResponse(userPrompt);
@@ -1786,15 +1454,13 @@
                 }
             });
             document.getElementById('generate-project-btn').addEventListener('click', generateProjectIdea);
-            document.getElementById('generate-explore-btn').addEventListener('click', generateSCSummary);
             
-            // Initialize all animations and charts on window load
+            // Replaced the explore button listener since the section was removed.
+
+            // Initialize all charts on window load
             createHeroAnimation();
             createProjectCharts();
             createDashboardCharts();
-            createManufacturingAnimation();
-            createWarehousingAnimation();
-            createMLAnimation();
         });
     </script>
 </body>
